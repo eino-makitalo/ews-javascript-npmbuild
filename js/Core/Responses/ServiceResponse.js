@@ -1,6 +1,6 @@
 "use strict";
-var EwsLogging_1 = require("../EwsLogging");
 var AltDictionary_1 = require("../../AltDictionary");
+var EwsLogging_1 = require("../EwsLogging");
 var EwsServiceJsonReader_1 = require("../EwsServiceJsonReader");
 var ExtendedPropertyDefinition_1 = require("../../PropertyDefinitions/ExtendedPropertyDefinition");
 var IndexedPropertyDefinition_1 = require("../../PropertyDefinitions/IndexedPropertyDefinition");
@@ -179,6 +179,7 @@ var ServiceResponse = (function () {
                             _this.errorDetails.Add(name, value[key]);
                         }
                     });
+                    break;
                 case XmlElementNames_1.XmlElementNames.FieldURI:
                     this.errorProperties.push(ServiceObjectSchema_1.ServiceObjectSchema.FindPropertyDefinition(jsObject[key][XmlAttributeNames_1.XmlAttributeNames.FieldURI]));
                     break;

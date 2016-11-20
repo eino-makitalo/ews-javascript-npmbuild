@@ -15,6 +15,7 @@ var LegacyAvailabilityTimeZone = (function (_super) {
     function LegacyAvailabilityTimeZone(timeZone /** MomentTimezone */) {
         _super.call(this);
         if (typeof timeZone !== 'undefined') {
+            this.Delta = DateTime_1.TimeSpan.FromHours(2);
             this.daylightTime = new LegacyAvailabilityTimeZoneTime_1.LegacyAvailabilityTimeZoneTime();
             this.daylightTime.Delta = DateTime_1.TimeSpan.Zero;
             this.daylightTime.DayOrder = 1;
@@ -23,7 +24,7 @@ var LegacyAvailabilityTimeZone = (function (_super) {
             this.daylightTime.TimeOfDay = DateTime_1.TimeSpan.FromHours(2);
             this.daylightTime.Year = 0;
             this.standardTime = new LegacyAvailabilityTimeZoneTime_1.LegacyAvailabilityTimeZoneTime();
-            this.standardTime.Delta = DateTime_1.TimeSpan.Zero;
+            this.standardTime.Delta = DateTime_1.TimeSpan.FromHours(1);
             this.standardTime.DayOrder = 1;
             this.standardTime.DayOfTheWeek = DayOfTheWeek_1.DayOfTheWeek.Sunday;
             this.standardTime.Month = 3;
@@ -39,7 +40,7 @@ var LegacyAvailabilityTimeZone = (function (_super) {
         for (var key in jsonProperty) {
             switch (key) {
                 case XmlElementNames_1.XmlElementNames.Bias:
-                    this.bias = DateTime_1.TimeSpan.FromMinutes(Number(jsonProperty[key]));
+                    this.Delta = DateTime_1.TimeSpan.FromMinutes(Number(jsonProperty[key]));
                     break;
                 case XmlElementNames_1.XmlElementNames.StandardTime:
                     this.standardTime = new LegacyAvailabilityTimeZoneTime_1.LegacyAvailabilityTimeZoneTime();
@@ -55,7 +56,7 @@ var LegacyAvailabilityTimeZone = (function (_super) {
         }
     };
     LegacyAvailabilityTimeZone.prototype.WriteElementsToXml = function (writer) {
-        writer.WriteElementValue(XmlNamespace_1.XmlNamespace.Types, XmlElementNames_1.XmlElementNames.Bias, this.bias.TotalMinutes);
+        writer.WriteElementValue(XmlNamespace_1.XmlNamespace.Types, XmlElementNames_1.XmlElementNames.Bias, this.Delta.TotalMinutes);
         this.standardTime.WriteToXml(writer, XmlElementNames_1.XmlElementNames.StandardTime);
         this.daylightTime.WriteToXml(writer, XmlElementNames_1.XmlElementNames.DaylightTime);
     };
