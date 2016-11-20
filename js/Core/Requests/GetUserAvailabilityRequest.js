@@ -86,7 +86,8 @@ var GetUserAvailabilityRequest = (function (_super) {
         // Against Exchange 2010, the time zone is emitted in the request's SOAP header.
         if (writer.Service.RequestedServerVersion == ExchangeVersion_1.ExchangeVersion.Exchange2007_SP1) {
             //todo: implement TimeZone and then LegacyAvailabilityTimeZone
-            var legacyTimeZone = new LegacyAvailabilityTimeZone_1.LegacyAvailabilityTimeZone();
+            var legacyTimeZone = new LegacyAvailabilityTimeZone_1.LegacyAvailabilityTimeZone("Europe/Helsinki");
+            //var  time
             legacyTimeZone.WriteToXml(writer, XmlElementNames_1.XmlElementNames.TimeZone);
         }
         writer.WriteStartElement(XmlNamespace_1.XmlNamespace.Messages, XmlElementNames_1.XmlElementNames.MailboxDataArray);
