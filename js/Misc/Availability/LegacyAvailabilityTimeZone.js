@@ -17,19 +17,19 @@ var LegacyAvailabilityTimeZone = (function (_super) {
         if (typeof timeZone !== 'undefined') {
             this.Delta = DateTime_1.TimeSpan.Zero;
             this.Delta = DateTime_1.TimeSpan.FromHours(2);
-            this.daylightTime = new LegacyAvailabilityTimeZoneTime_1.LegacyAvailabilityTimeZoneTime();
-            this.daylightTime.Delta = DateTime_1.TimeSpan.Zero;
-            this.daylightTime.DayOrder = 1;
-            this.daylightTime.DayOfTheWeek = DayOfTheWeek_1.DayOfTheWeek.Sunday;
-            this.daylightTime.Month = 10;
-            this.daylightTime.TimeOfDay = DateTime_1.TimeSpan.FromHours(2);
-            this.daylightTime.Year = 0;
             this.standardTime = new LegacyAvailabilityTimeZoneTime_1.LegacyAvailabilityTimeZoneTime();
-            this.standardTime.Delta = DateTime_1.TimeSpan.FromHours(1);
-            this.standardTime.DayOrder = 1;
+            this.standardTime.Delta = DateTime_1.TimeSpan.Zero;
+            this.standardTime.DayOrder = 5;
             this.standardTime.DayOfTheWeek = DayOfTheWeek_1.DayOfTheWeek.Sunday;
             this.standardTime.Month = 3;
-            this.standardTime.TimeOfDay = DateTime_1.TimeSpan.FromHours(2);
+            this.standardTime.TimeOfDay = DateTime_1.TimeSpan.FromHours(3);
+            this.daylightTime.Year = 0;
+            this.daylightTime = new LegacyAvailabilityTimeZoneTime_1.LegacyAvailabilityTimeZoneTime();
+            this.daylightTime.Delta = DateTime_1.TimeSpan.FromHours(1);
+            this.daylightTime.DayOrder = 5;
+            this.daylightTime.DayOfTheWeek = DayOfTheWeek_1.DayOfTheWeek.Sunday;
+            this.daylightTime.Month = 10;
+            this.daylightTime.TimeOfDay = DateTime_1.TimeSpan.FromHours(4);
             this.daylightTime.Year = 0;
         }
     }
