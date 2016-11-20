@@ -62,7 +62,7 @@ var LegacyAvailabilityTimeZoneTime = (function (_super) {
         writer.WriteElementValue(XmlNamespace_1.XmlNamespace.Types, XmlElementNames_1.XmlElementNames.DayOrder, this.DayOrder);
         writer.WriteElementValue(XmlNamespace_1.XmlNamespace.Types, XmlElementNames_1.XmlElementNames.Month, this.Month);
         // Only write DayOfWeek if this is a recurring time change
-        if (this.Year == 0) {
+        if ((this.Year == null) || (this.Year == 0)) {
             writer.WriteElementValue(XmlNamespace_1.XmlNamespace.Types, XmlElementNames_1.XmlElementNames.DayOfWeek, this.DayOfTheWeek);
         }
         // Only emit year if it's non zero, otherwise AS returns "Request is invalid"
