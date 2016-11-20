@@ -15,7 +15,6 @@ var LegacyAvailabilityTimeZone = (function (_super) {
     function LegacyAvailabilityTimeZone(timeZone /** MomentTimezone */) {
         _super.call(this);
         if (typeof timeZone !== 'undefined') {
-            this.Delta = DateTime_1.TimeSpan.Zero;
             this.Delta = DateTime_1.TimeSpan.FromHours(2);
             this.standardTime = new LegacyAvailabilityTimeZoneTime_1.LegacyAvailabilityTimeZoneTime();
             this.standardTime.Delta = DateTime_1.TimeSpan.Zero;
