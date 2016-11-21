@@ -352,8 +352,16 @@ var EwsUtilities = (function () {
     //static Parse(value: string): any{ throw new Error("EwsUtilities.ts - static Parse : Not implemented.");}
     EwsUtilities.ParseEnum = function (value, ewsenum) { throw new Error("EwsUtilities.ts - static Parse : Not implemented."); };
     EwsUtilities.ParseAsUnbiasedDatetimescopedToServicetimeZone = function (dateString, service) {
-        // Convert the element's value to a DateTime with no adjustment.
-        var tempDate = DateTime_1.DateTime.Parse(dateString + "Z");
+        // Convert the element's value to a DateTime with no adjustment.  
+        // fix this if Datetime is in format like '2016-11-11T09:00:00+02:00 - no sense to add Z
+        // not very nice indeed
+        var tempDate;
+        if ((DateTime_2.moment.parseZone(dateString).utcOffset() == 0) && (!(dateString.substr(-1, 1) == 'Z')) && (!(dateString.substr(-6, 6) == '+00:00'))) {
+            tempDate = DateTime_1.DateTime.Parse(dateString + "Z");
+        }
+        else {
+            tempDate = DateTime_1.DateTime.Parse(dateString);
+        }
         // Set the kind according to the service's time zone
         if (service.TimeZone == DateTime_1.TimeZoneInfo.Utc) {
             return new DateTime_1.DateTime(tempDate.TotalMilliSeconds, DateTime_1.DateTimeKind.Utc);
