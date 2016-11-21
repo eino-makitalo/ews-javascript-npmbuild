@@ -15,7 +15,7 @@ var LegacyAvailabilityTimeZone = (function (_super) {
     function LegacyAvailabilityTimeZone(timeZone /** MomentTimezone */) {
         _super.call(this);
         if (typeof timeZone !== 'undefined') {
-            this.Delta = DateTime_1.TimeSpan.FromHours(2);
+            this.Delta = DateTime_1.TimeSpan.FromHours(-2);
             this.standardTime = new LegacyAvailabilityTimeZoneTime_1.LegacyAvailabilityTimeZoneTime();
             this.standardTime.Delta = DateTime_1.TimeSpan.Zero;
             this.standardTime.DayOrder = 5;
@@ -24,7 +24,7 @@ var LegacyAvailabilityTimeZone = (function (_super) {
             this.standardTime.TimeOfDay = DateTime_1.TimeSpan.FromHours(3);
             this.standardTime.Year = 0;
             this.daylightTime = new LegacyAvailabilityTimeZoneTime_1.LegacyAvailabilityTimeZoneTime();
-            this.daylightTime.Delta = DateTime_1.TimeSpan.FromHours(1);
+            this.daylightTime.Delta = DateTime_1.TimeSpan.FromHours(-1);
             this.daylightTime.DayOrder = 5;
             this.daylightTime.DayOfTheWeek = DayOfTheWeek_1.DayOfTheWeek.Sunday;
             this.daylightTime.Month = 10;
