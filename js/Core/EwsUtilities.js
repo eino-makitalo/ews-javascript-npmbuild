@@ -393,7 +393,7 @@ var EwsUtilities = (function () {
     EwsUtilities.numPad = function (num, length) {
         var str = num.toString();
         while (str.length < length)
-            str += "0";
+            str = "0" + str;
         return str;
     };
     EwsUtilities.TimeSpanToXSTime = function (timeSpan) {
